@@ -28,4 +28,34 @@ public class TestController {
 
     }
 
+    @PostMapping(
+            name = "testString",
+            path = "/test-string",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseDto testString(@RequestBody RequestDto request) throws Exception {
+        service.testString(request.getSeconds());
+        return ResponseDto.builder()
+                .code(200)
+                .message("OK")
+                .build();
+
+    }
+
+    @PostMapping(
+            name = "testRestTemplate",
+            path = "/test-rest-template",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseDto testRestTemplate(@RequestBody RequestDto request) throws Exception {
+        service.testRestTemplate(request.getSeconds());
+        return ResponseDto.builder()
+                .code(200)
+                .message("OK")
+                .build();
+
+    }
+
 }
